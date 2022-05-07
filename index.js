@@ -2,6 +2,7 @@ const fs = require('fs');
 
 const inquirer = require('inquirer');
 
+const generateHTML = require('./src/page-template.js');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -107,9 +108,12 @@ const promptTeam = team => {
     });
 };
 
+const writeFile = 
+
 promptManager()
     .then(promptTeam)
-    .then(team => console.log(team));
+    .then(team => generateHTML(team))
+    .then(html => writeFile(html))
     
    
     
