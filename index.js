@@ -31,6 +31,10 @@ const promptManager = () => {
             message: "What is this manager's office number?"
         }
     ])
+    .then(managerDetails => {
+        const { name, id, email, officeNumber } = managerDetails;
+        return new Manager(name, id, email, officeNumber);
+    });
 };
 
 const promptTeam = team => {
@@ -72,8 +76,10 @@ const promptTeam = team => {
                     message: "What is engineer's github username?"
                 }
             ])
-            .then(engineer => {
-                team.members.push(engineer);
+            .then(engineerDetails => {
+                const { name, id, email, github } = engineerDetails;
+                
+                team.members.push(new Engineer(name, id, email, github))
                 return promptTeam(team);
             });
         }
@@ -100,20 +106,35 @@ const promptTeam = team => {
                     message: "What is intern's school?"
                 }
             ])
-            .then(intern => {
-                team.members.push(intern);
+            .then(internDetails => {
+                const { name, id, email, school } = internDetails;
+                
+                team.members.push(new Intern(name, id, email, school))
                 return promptTeam(team);
             });
         }
     });
 };
 
-const writeFile = 
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html', fileContent, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+};
 
 promptManager()
     .then(promptTeam)
     .then(team => generateHTML(team))
-    .then(html => writeFile(html))
+    .then(html => writeFile(html));
     
    
     
