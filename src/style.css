@@ -1,0 +1,29 @@
+.card {
+    background-color: #F7F30F;
+    border-style: solid;
+    border-radius: 7px;
+    margin: 10px;
+    width: 180px;
+    box-shadow: 7px 7px 5px #ADAB54;
+}
+
+h2 {
+    color: #F74043;
+}
+
+h2, h3 {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.container {
+    background-color: #28A9F7;
+    border-top: solid;
+    padding-bottom: 10px;
+}
+
+p {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
