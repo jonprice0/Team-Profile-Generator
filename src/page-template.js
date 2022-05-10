@@ -52,13 +52,13 @@ const generateHTML = teamData => {
     </head>
     
     <body>
-        <header>
+        <header class="banner">
             <div>
                 <h1>My Team</h1>
             </div>
         </header>
         
-        <main>
+        <main class="flex-container">
             <div class="card">
                 <h2><b>${name}</b></h2>
                 <h3>${role}</h3>
