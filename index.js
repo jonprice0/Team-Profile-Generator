@@ -5,6 +5,17 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generateHTML = require('./src/page-template.js');
 
+var team = [];
+var dummyTeam =  [
+    new Manager("Steven", 1, "steven@test.com", 1),
+    new Engineer("Jessica", 2, "jessica@test.com", "jessica0"),
+    new Intern("Ralph", 3, "ralph@test.com", "UCF"),
+    new Engineer("Patricia", 2, "patricia@test.com", "patricia0"),
+    new Engineer("Yuri", 2, "yuri@test.com", "yuri0"),
+    new Intern("Renee", 3, "renee@test.com", "MIT"),
+    new Engineer("Prescott", 2, "prescott@test.com", "prescott0")
+];
+
 const promptManager = () => {
     return inquirer.prompt([
         {
@@ -30,14 +41,12 @@ const promptManager = () => {
     ])
     .then(managerDetails => {
         const { name, id, email, officeNumber } = managerDetails;
-        return new Manager(name, id, email, officeNumber);
+        team.push(new Manager(name, id, email, officeNumber));
+        return team;
     });
 };
 
 const promptTeam = team => {
-    if (!team.members) {
-        team.members = [];
-    };
     return inquirer.prompt([
         {
             type: 'list',
@@ -48,6 +57,7 @@ const promptTeam = team => {
     ])
     .then(response => {
         if (response.choice === 'Finish and build team page') {
+            console.log(team);
             return team;
         }
         else if (response.choice === 'Add an engineer') {
@@ -75,8 +85,7 @@ const promptTeam = team => {
             ])
             .then(engineerDetails => {
                 const { name, id, email, github } = engineerDetails;
-                
-                team.members.push(new Engineer(name, id, email, github))
+                team.push(new Engineer(name, id, email, github));
                 return promptTeam(team);
             });
         }
@@ -105,8 +114,7 @@ const promptTeam = team => {
             ])
             .then(internDetails => {
                 const { name, id, email, school } = internDetails;
-                
-                team.members.push(new Intern(name, id, email, school))
+                team.push(new Intern(name, id, email, school));
                 return promptTeam(team);
             });
         }
@@ -114,6 +122,7 @@ const promptTeam = team => {
 };
 
 const writeFile = fileContent => {
+    console.log(fileContent);
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', fileContent, err => {
             if (err) {
@@ -128,10 +137,13 @@ const writeFile = fileContent => {
     });
 };
 
-promptManager()
-    .then(promptTeam)
-    .then(team => generateHTML(team))
-    .then(html => writeFile(html));
-    
+// promptManager()
+// .then(manager => promptTeam(manager))
+// .then(team => generateHTML(team))
+// .then(html => writeFile(html));
+
+// console.log(dummyTeam);
+writeFile(generateHTML(dummyTeam));
+
    
     
