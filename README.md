@@ -20,7 +20,7 @@
 
 ## Video demo of the application's behavior:
 
-![Video of the application's behavior](https://user-images.githubusercontent.com/85747017/180624351-3ec2524c-f982-4c38-aa8d-924852cf2c74.mp4)
+[Video of the application's behavior](https://user-images.githubusercontent.com/85747017/180624351-3ec2524c-f982-4c38-aa8d-924852cf2c74.mp4)
 
 ## License
 
