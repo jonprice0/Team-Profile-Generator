@@ -18,6 +18,10 @@
 
 ![Screenshot of team-profile-generator on load](./assets/images/Team-Profile-Generator.png)
 
+## Video demo of the application's behavior:
+
+
+
 ## License
 
 > Naturally, I have not included a license for this simple exercise. :)
