@@ -57,7 +57,6 @@ const promptTeam = team => {
     ])
     .then(response => {
         if (response.choice === 'Finish and build team page') {
-            console.log(team);
             return team;
         }
         else if (response.choice === 'Add an engineer') {
@@ -137,12 +136,12 @@ const writeFile = fileContent => {
     });
 };
 
-// promptManager()
-// .then(manager => promptTeam(manager))
-// .then(team => generateHTML(team))
-// .then(html => writeFile(html));
+promptManager()
+.then(manager => promptTeam(manager))
+.then(team => generateHTML(team))
+.then(html => writeFile(html));
 
-writeFile(generateHTML(dummyTeam));
+// writeFile(generateHTML(dummyTeam));
 
    
     
