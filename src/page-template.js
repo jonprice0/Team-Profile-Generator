@@ -6,13 +6,13 @@ const generateTeamMembersHTML = teamData => {
     for (i = 0; i < teamData.length; i++) {
         switch (teamData[i].role) {
             case "Manager":
-                htmlStr = htmlStr.concat("", `<div class="card">\n\t\t\t<h2><i class="fa-solid fa-mug-hot"></i> <b>${teamData[i].name}</b></h2>\n\t\t\t<h3>${teamData[i].role}</h3>\n\t\t\t<div class="container">\n\t\t\t\t<p>ID: ${teamData[i].id}</p>\n\t\t\t\t<p>Email: <a href="mailto:${teamData[i].email}">${teamData[i].email}</a></p>\n\t\t\t\t<p>Office number: ${teamData[i].officeNumber}</p>\n\t\t\t</div>\n\t\t</div>`);
+                htmlStr = htmlStr.concat("", `<div class="card">\n\t\t\t<h2><b>${teamData[i].name}</b></h2>\n\t\t\t<h3><i class="fa-solid fa-mug-hot"></i> ${teamData[i].role}</h3>\n\t\t\t<div class="container">\n\t\t\t\t<p>ID: ${teamData[i].id}</p>\n\t\t\t\t<p>Email: <a href="mailto:${teamData[i].email}">${teamData[i].email}</a></p>\n\t\t\t\t<p>Office number: ${teamData[i].officeNumber}</p>\n\t\t\t</div>\n\t\t</div>`);
                 break;
             case "Engineer":
-                htmlStr = htmlStr.concat("", `\n\t\t<div class="card">\n\t\t\t<h2><i class="fa-solid fa-glasses"></i> <b>${teamData[i].name}</b></h2>\n\t\t\t<h3>${teamData[i].role}</h3>\n\t\t\t<div class="container">\n\t\t\t\t<p>ID: ${teamData[i].id}</p>\n\t\t\t\t<p>Email: <a href="mailto:${teamData[i].email}">${teamData[i].email}</a></p>\n\t\t\t\t<p>Github: <a href="github.com/${teamData[i].github}">${teamData[i].github}</a></p>\n\t\t\t</div>\n\t\t</div>`);
+                htmlStr = htmlStr.concat("", `\n\t\t<div class="card">\n\t\t\t<h2><b>${teamData[i].name}</b></h2>\n\t\t\t<h3><i class="fa-solid fa-glasses"></i> ${teamData[i].role}</h3>\n\t\t\t<div class="container">\n\t\t\t\t<p>ID: ${teamData[i].id}</p>\n\t\t\t\t<p>Email: <a href="mailto:${teamData[i].email}">${teamData[i].email}</a></p>\n\t\t\t\t<p>Github: <a href="github.com/${teamData[i].github}">${teamData[i].github}</a></p>\n\t\t\t</div>\n\t\t</div>`);
                 break;
             case "Intern":
-                htmlStr = htmlStr.concat("", `\n\t\t<div class="card">\n\t\t\t<h2><i class="fa-solid fa-user-graduate"></i> <b>${teamData[i].name}</b></h2>\n\t\t\t<h3>${teamData[i].role}</h3>\n\t\t\t<div class="container">\n\t\t\t\t<p>ID: ${teamData[i].id}</p>\n\t\t\t\t<p>Email: <a href="mailto:${teamData[i].email}">${teamData[i].email}</a></p>\n\t\t\t\t<p>School: ${teamData[i].school}</p>\n\t\t\t</div>\n\t\t\</div>`);
+                htmlStr = htmlStr.concat("", `\n\t\t<div class="card">\n\t\t\t<h2><b>${teamData[i].name}</b></h2>\n\t\t\t<h3><i class="fa-solid fa-user-graduate"></i> ${teamData[i].role}</h3>\n\t\t\t<div class="container">\n\t\t\t\t<p>ID: ${teamData[i].id}</p>\n\t\t\t\t<p>Email: <a href="mailto:${teamData[i].email}">${teamData[i].email}</a></p>\n\t\t\t\t<p>School: ${teamData[i].school}</p>\n\t\t\t</div>\n\t\t\</div>`);
                 break;
         };
     };
@@ -31,6 +31,7 @@ return `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Team Profile</title>
+    <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 
