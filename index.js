@@ -5,7 +5,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generateHTML = require('./src/page-template.js');
 
+// Initialize the team array:
 var team = [];
+// Initialize a dummy team array for testing:
 var dummyTeam =  [
     new Manager("Steven", 1, "steven@test.com", 1),
     new Engineer("Jessica", 2, "jessica@test.com", "jessica0"),
@@ -16,6 +18,7 @@ var dummyTeam =  [
     new Engineer("Prescott", 2, "prescott@test.com", "prescott0")
 ];
 
+// Prompt the first set of questions:
 const promptManager = () => {
     return inquirer.prompt([
         {
@@ -39,6 +42,7 @@ const promptManager = () => {
             message: "What is this manager's office number?"
         }
     ])
+    // Return the team array with the manager data at the first index:
     .then(managerDetails => {
         const { name, id, email, officeNumber } = managerDetails;
         team.push(new Manager(name, id, email, officeNumber));
@@ -46,7 +50,9 @@ const promptManager = () => {
     });
 };
 
+// Get the rest of the team info from the user:
 const promptTeam = team => {
+    // Prompt the user to add another team member or exit and build the html page:
     return inquirer.prompt([
         {
             type: 'list',
@@ -56,9 +62,11 @@ const promptTeam = team => {
         }
     ])
     .then(response => {
+        // Either exit and build page...
         if (response.choice === 'Finish and build team page') {
             return team;
         }
+        // Or add add another team member:
         else if (response.choice === 'Add an engineer') {
             return inquirer.prompt([
                 {
@@ -120,8 +128,8 @@ const promptTeam = team => {
     });
 };
 
+// Use 'fs' to write a string input to an html file in the dist/ folder:
 const writeFile = fileContent => {
-    console.log(fileContent);
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', fileContent, err => {
             if (err) {
@@ -136,11 +144,16 @@ const writeFile = fileContent => {
     });
 };
 
+// Prompt manager for input;
+// Then prompt the user to enter more team members;
+// Generate a formatted string of html elements with the data;
+// Then write that data to an html file:
 promptManager()
 .then(manager => promptTeam(manager))
 .then(team => generateHTML(team))
 .then(html => writeFile(html));
 
+// Test function for skipping the prompts while debugging:
 // writeFile(generateHTML(dummyTeam));
 
    
