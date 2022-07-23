@@ -150,8 +150,7 @@ const writeFile = fileContent => {
 // Then write that data to an html file:
 promptManager()
 .then(manager => promptTeam(manager))
-.then(team => generateHTML(team))
-.then(html => writeFile(html));
+.then(team => writeFile(generateHTML(team)));
 
 // Test function for skipping the prompts while debugging:
 // writeFile(generateHTML(dummyTeam));
