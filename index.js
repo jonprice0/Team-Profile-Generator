@@ -137,12 +137,12 @@ const writeFile = fileContent => {
     });
 };
 
-promptManager()
-.then(manager => promptTeam(manager))
-.then(team => generateHTML(team))
-.then(html => writeFile(html));
+// promptManager()
+// .then(manager => promptTeam(manager))
+// .then(team => generateHTML(team))
+// .then(html => writeFile(html));
 
-// writeFile(generateHTML(dummyTeam));
+writeFile(generateHTML(dummyTeam));
 
    
     
